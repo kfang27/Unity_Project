@@ -1,1 +1,2 @@
-# Unity Project
+# Project Overview  
+We will be creating a Soulslike game, but with just the boss fights. The game will take place in an underwater ruin-like / submerged urban / abyssal alley-like environment. The main room will act like a colosseum containing multiple gates, each gate leading to its own boss fight. To progress, the player must take on the first unlocked gate before unlocking the next. The general components that are to be implemented in this game, will be an interface, player (with weapon) functionalities, enemies, and setting design. 

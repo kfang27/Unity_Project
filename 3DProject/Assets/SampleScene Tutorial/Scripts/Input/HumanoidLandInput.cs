@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 
 public class HumanoidLandInput : MonoBehaviour
 {
+    // Anybody can get these variables, but they can only be set locally within this script
     public Vector2 MoveInput { get; private set; } = Vector2.zero;
     public Vector2 LookInput { get; private set; } = Vector2.zero;
 
@@ -37,6 +38,8 @@ public class HumanoidLandInput : MonoBehaviour
 
     private void SetMove(InputAction.CallbackContext ctx)
     {
+        /* ctx/contex is the data being reported back by that event, 
+        then we read the Vector2 value from it */ 
         MoveInput = ctx.ReadValue<Vector2>();
         MoveIsPressed = !(MoveInput == Vector2.zero);
     }

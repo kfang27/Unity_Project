@@ -9,6 +9,7 @@ public class HumanoidLandController : MonoBehaviour
 
     Vector3 _playerMoveInput = Vector3.zero;
 
+    // This heading will show in the inspector
     [Header("Movement Heading")]
     [SerializeField] float _movementMultiplier = 30.0f;
 

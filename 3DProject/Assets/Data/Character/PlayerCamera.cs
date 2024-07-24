@@ -111,7 +111,8 @@ public class PlayerCamera : MonoBehaviour
             targetCameraZPosition = -(distanceFromHitObject - cameraCollisionRadius);
         }
 
-        if (Mathf.Abs(targetCameraZPosition) < cameraCollisionRadius){
+        if (Mathf.Abs(targetCameraZPosition) < cameraCollisionRadius)
+        {
             targetCameraZPosition = -cameraCollisionRadius;
         }
 

@@ -103,7 +103,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""name"": ""Movement"",
                     ""type"": ""PassThrough"",
                     ""id"": ""e8a203aa-8d23-4aab-ab9d-dece96e4abf6"",
-                    ""expectedControlType"": ""Vector2"",
+                    ""expectedControlType"": ""Delta"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false

@@ -156,8 +156,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 19.501099, y: 0}
-  m_SizeDelta: {x: 211.7264, y: 0}
+  m_AnchoredPosition: {x: 0.0010375977, y: 0}
+  m_SizeDelta: {x: -0.0019531, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &272800510
 MonoBehaviour:
@@ -190,8 +190,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294177779
-  m_fontColor: {r: 0.9528302, g: 0.9528302, b: 0.9528302, a: 1}
+    rgba: 4290822336
+  m_fontColor: {r: 0.754717, g: 0.754717, b: 0.754717, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -292,8 +292,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 19.501099, y: 0}
-  m_SizeDelta: {x: 211.7264, y: 0}
+  m_AnchoredPosition: {x: 0.0010375977, y: 0}
+  m_SizeDelta: {x: -0.0019531, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &354719356
 MonoBehaviour:
@@ -508,8 +508,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -11.143594, y: 195.875}
-  m_SizeDelta: {x: 215.7174, y: 66.25}
+  m_AnchoredPosition: {x: -2.5742, y: 193.9454}
+  m_SizeDelta: {x: 399.2455, y: 70.1091}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &501023372
 MonoBehaviour:
@@ -616,7 +616,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.3301887, g: 0.3301887, b: 0.3301887, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -676,8 +676,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -6.5426, y: -141.14105}
-  m_SizeDelta: {x: 391.3123, y: 61.6289}
+  m_AnchoredPosition: {x: -6.5426, y: -146.87598}
+  m_SizeDelta: {x: 391.3123, y: 65.8577}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &575495113
 MonoBehaviour:
@@ -692,7 +692,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.23584908, g: 0.22583662, b: 0.22583662, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -756,8 +756,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 4.7497, y: -0.00013245}
-  m_SizeDelta: {x: 257.1859, y: 58.548}
+  m_AnchoredPosition: {x: 0.00074142, y: 0.00001359}
+  m_SizeDelta: {x: 391.31, y: 61.629}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1301840475
 MonoBehaviour:
@@ -772,7 +772,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 0.745283, g: 0.745283, b: 0.745283, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -781,18 +781,18 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 50
+    m_FontSize: 40
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 5
+    m_MinSize: 4
     m_MaxSize: 50
-    m_Alignment: 1
+    m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Game Title
+  m_Text: Knightmare Rush
 --- !u!222 &1301840476
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -837,8 +837,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -11.143594, y: 195.875}
-  m_SizeDelta: {x: 215.7174, y: 66.25}
+  m_AnchoredPosition: {x: -1.107399, y: 197.30872}
+  m_SizeDelta: {x: 396.368, y: 63.3825}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1593704009
 MonoBehaviour:
@@ -909,7 +909,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.5660378, g: 0.52064794, b: 0.52064794, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1379,6 +1379,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2227497965305912961, guid: 70138472f7b281f48a1797fa6b2ee5b4, type: 3}
+      propertyPath: offset.y
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2227497965305912961, guid: 70138472f7b281f48a1797fa6b2ee5b4, type: 3}
       propertyPath: offset.z
       value: -3

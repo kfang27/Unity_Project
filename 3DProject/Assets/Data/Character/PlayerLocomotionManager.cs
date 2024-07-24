@@ -23,6 +23,7 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
         player = GetComponent<PlayerManager>();
     }
 
+   
 
     public void HandleAllMovement()
     {

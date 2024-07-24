@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class PlayerInputManager : MonoBehaviour
 {
     public static PlayerInputManager instance;
+    public PlayerManager player;
 
     // PlayerControls is the name of the C# class generated from the movement schematic
     PlayerControls playerControls = null;
@@ -115,6 +116,11 @@ public class PlayerInputManager : MonoBehaviour
         {
             moveAmount = 1;
         }
+        if (player == null)
+            return;
+
+        // Passing 0 because we don't want strafing. Only use horizontal when strafing or locking onto target
+        player.playerAnimatorManager.UpdateAnimatorMovementParameters(0, moveAmount);
     }
 
     private void HandleCameraMovementInput()

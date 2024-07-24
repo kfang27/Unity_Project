@@ -16,6 +16,10 @@ public class ResetActionFlag : StateMachineBehaviour
 
         // Resets this flag when the action ends and when the state returns to "EMPTY"
         character.isPerformingAction = false;
+        character.canRotate = true;
+        character.canMove = true;
+        character.applyRootMotion = false;
+        //character.animator.applyRootMotion = false;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

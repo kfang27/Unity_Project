@@ -49,6 +49,9 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
     {
         GetVerticalAndHorizontalInputs();
 
+        if (!player.canMove)
+            return;
+
         // Move Direction will be based on camera perspective & movement inputs
         moveDirection = PlayerCamera.instance.transform.forward * verticalMovement;
         moveDirection = moveDirection + PlayerCamera.instance.transform.right * horizontalMovement;
@@ -69,6 +72,11 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
 
     private void HandleRotation()
     {
+        if (!player.canRotate) 
+        {
+            return;
+        }
+
         targetRotationDirection = Vector3.zero;
         targetRotationDirection = PlayerCamera.instance.cameraObject.transform.forward * verticalMovement;
         targetRotationDirection = targetRotationDirection + PlayerCamera.instance.cameraObject.transform.right * horizontalMovement;
@@ -108,7 +116,7 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
         // This is for the backstep (aka character is stationary / no movement direction is detected)
         else
         {
-
+            player.playerAnimatorManager.PlayTargetActionAnimation("Back_Step_01", true, true);
         }
         
     }

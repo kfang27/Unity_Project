@@ -45,4 +45,8 @@ public class CharacterManager : NetworkBehaviour
         }
     }
 
+    protected virtual void LateUpdate()
+    {
+
+    }
 }

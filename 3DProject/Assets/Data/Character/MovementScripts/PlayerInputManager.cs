@@ -11,11 +11,15 @@ public class PlayerInputManager : MonoBehaviour
     // PlayerControls is the name of the C# class generated from the movement schematic
     PlayerControls playerControls = null;
 
-    [Header("MOVEMENT INPUT")]
+    [Header("PLAYER MOVEMENT INPUT")]
     [SerializeField] Vector2 movementInput;
     public float horizontalInput;
     public float verticalInput;
     public float moveAmount;
+
+    [Header("PLAYER ACTION INPUT")]
+    [SerializeField] bool dodgeInput = false;
+
 
     [Header("CAMERA MOVEMENT INPUT")]
     [SerializeField] Vector2 cameraInput;
@@ -68,6 +72,7 @@ public class PlayerInputManager : MonoBehaviour
             //Movement is the name of the actions in the action maps
             playerControls.PlayerMovement.Movement.performed += i => movementInput = i.ReadValue<Vector2>();
             playerControls.PlayerCamera.Movement.performed += i => cameraInput = i.ReadValue<Vector2>();
+            playerControls.PlayerActions.Dodge.performed += i => dodgeInput = true;
         }
 
         playerControls.Enable();
@@ -96,8 +101,14 @@ public class PlayerInputManager : MonoBehaviour
 
     private void Update()
     {
+        HandleAllInputs();
+    }
+
+    private void HandleAllInputs()
+    {
         HandleMovementInput();
         HandleCameraMovementInput();
+        HandleDodgeInput();
     }
 
     private void HandleMovementInput()
@@ -127,5 +138,15 @@ public class PlayerInputManager : MonoBehaviour
     {
         cameraHorizontalInput = cameraInput.x;
         cameraVerticalInput = cameraInput.y;
+    }
+
+    private void HandleDodgeInput()
+    {
+        if (dodgeInput)
+        {
+            dodgeInput = false;
+
+            player.playerLocomotionManager.AttemptToPerformDodge();
+        }
     }
 }

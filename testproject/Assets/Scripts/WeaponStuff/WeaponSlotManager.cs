@@ -10,8 +10,12 @@ public class WeaponSlotManager : MonoBehaviour
     DamageCollider leftHandDamageCollider;
     DamageCollider rightHandDamageCollider;
 
+    QuickSlotsUI quickSlotsUI;
+
     private void Awake()
     {
+        quickSlotsUI = FindAnyObjectByType<QuickSlotsUI>();
+
         WeaponHolderSlot[] weaponHolderSlots = GetComponentsInChildren<WeaponHolderSlot>();
         foreach (WeaponHolderSlot weaponSlot in weaponHolderSlots)
         {
@@ -32,11 +36,14 @@ public class WeaponSlotManager : MonoBehaviour
         {
             leftHandSlot.LoadWeaponModel(weaponItem);
             LoadLeftWeaponDamageCollider();
+            quickSlotsUI.UpdateWeaponQuickSlotsUI(true, weaponItem);
+
         }
         else
         {
             rightHandSlot.LoadWeaponModel(weaponItem);
             LoadRightWeaponDamageCollider();
+            quickSlotsUI.UpdateWeaponQuickSlotsUI(false, weaponItem);
         }
     }
 

@@ -99,6 +99,9 @@ public class PlayerLocomotion : MonoBehaviour
         moveDirection = cameraObject.forward * inputHandler.vertical;
         moveDirection += cameraObject.right * inputHandler.horizontal;
         moveDirection.Normalize();
+
+        // For vertical slow fall
+        float verticalVelocity = rigidbody.velocity.y;
         moveDirection.y = 0;
 
         float speed = movementSpeed;
@@ -124,6 +127,8 @@ public class PlayerLocomotion : MonoBehaviour
         }
 
         Vector3 projectedVelocity = Vector3.ProjectOnPlane(moveDirection, normalVector);
+        // For vertical slow fall
+        projectedVelocity.y = verticalVelocity;
         rigidbody.velocity = projectedVelocity;
 
         animatorHandler.UpdateAnimatorValues(inputHandler.moveAmount, 0, isSprinting);

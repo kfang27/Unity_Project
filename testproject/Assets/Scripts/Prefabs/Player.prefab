@@ -90,10 +90,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.3
-  m_Height: 2
+  m_Radius: 0.2
+  m_Height: 1.9
   m_Direction: 1
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Center: {x: 0, y: 0.97, z: 0}
 --- !u!54 &4973648383980074673
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -168,6 +168,8 @@ MonoBehaviour:
   sprintSpeed: 7
   rotationSpeed: 10
   isSprinting: 0
+  sprintStaminaCost: 10
+  rollStaminaCost: 20
 --- !u!114 &7891451319242281376
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -181,6 +183,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canDoCombo: 0
+  isInvulnerable: 0
 --- !u!114 &8267210814047178354
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -220,11 +223,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62671bbf2c8de0c4787bdf1a1b3213e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthBar: {fileID: 0}
   healthLevel: 10
   maxHealth: 0
   currentHealth: 0
-  healthbar: {fileID: 0}
   isDead: 0
+  staminaBar: {fileID: 0}
+  maxStamina: 100
+  currentStamina: 0
+  staminaRegenRate: 5
+  staminaRegenDelay: 2
 --- !u!1001 &2246557217911718139
 PrefabInstance:
   m_ObjectHideFlags: 0

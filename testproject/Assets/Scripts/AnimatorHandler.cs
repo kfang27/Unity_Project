@@ -99,6 +99,7 @@ public class AnimatorHandler : MonoBehaviour
         canRotate = false;
     }
 
+    // These are animation events applied during certain frames of the animations
     public void EnableCombo()
     {
         anim.SetBool("canDoCombo", true);
@@ -107,6 +108,16 @@ public class AnimatorHandler : MonoBehaviour
     public void DisableCombo()
     {
         anim.SetBool("canDoCombo", false);
+    }
+
+    public void EnableIsInvulnerable()
+    {
+        anim.SetBool("isInvulnerable", true);
+    }
+
+    public void DisableIsInvulnerable()
+    {
+        anim.SetBool("isInvulnerable", false);
     }
 
     private void OnAnimatorMove()

@@ -31,6 +31,10 @@ public class PlayerLocomotion : MonoBehaviour
 
     public bool isSprinting;
 
+    PlayerStats playerStats;
+    public int sprintStaminaCost = 10;
+    public int rollStaminaCost = 20;
+
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
@@ -43,6 +47,11 @@ public class PlayerLocomotion : MonoBehaviour
 
     }
 
+    private void Awake()
+    {
+        playerStats = GetComponent<PlayerStats>();
+    }
+
     public void Update()
     {
         float delta = Time.deltaTime;
@@ -52,7 +61,6 @@ public class PlayerLocomotion : MonoBehaviour
         inputHandler.TickInput(delta);
         HandleMovement(delta);
         HandleRollingAndSprinting(delta);
-
 
     }
 
@@ -151,4 +159,5 @@ public class PlayerLocomotion : MonoBehaviour
     }
 
     #endregion
+
 }

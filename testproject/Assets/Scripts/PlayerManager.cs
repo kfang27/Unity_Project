@@ -9,6 +9,8 @@ public class PlayerManager : MonoBehaviour
     CameraHandler cameraHandler;
 
     public bool canDoCombo;
+    public bool isInvulnerable;
+
 
     void Start()
     {
@@ -25,6 +27,8 @@ public class PlayerManager : MonoBehaviour
     {
         inputHandler.isInteracting = anim.GetBool("isInteracting");
         canDoCombo = anim.GetBool("canDoCombo");
+        isInvulnerable = anim.GetBool("isInvulnerable");
+
         inputHandler.rollFlag = false;
 
         // can be commented out if using first implementation in HandleRollInput function of InputHandler

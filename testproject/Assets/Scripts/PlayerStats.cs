@@ -4,25 +4,40 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
+    PlayerManager playerManager;
+
+    public HealthBar healthBar;
     public int healthLevel = 10;
     public int maxHealth;
     public int currentHealth;
-
-    public HealthBar healthbar;
     public bool isDead;
+
+    public StaminaBar staminaBar;
+    public int maxStamina = 100;
+    public int currentStamina;
+    public float staminaRegenRate = 5;
+    public float staminaRegenDelay = 2;
+
+    private bool isRegeneratingStamina;
+    private float regenTimer;
 
     AnimatorHandler animatorHandler;
 
     private void Awake()
     {
+        playerManager = GetComponent<PlayerManager>();
+        healthBar = FindObjectOfType<HealthBar>();
+
         animatorHandler = GetComponentInChildren<AnimatorHandler>();
+
     }
 
     void Start()
     {
         maxHealth = SetMaxHealthFromHealthLevel();
         currentHealth = maxHealth;
-        healthbar.SetMaxHealth(maxHealth);
+        healthBar.SetMaxHealth(maxHealth);
+
     }
 
     private int SetMaxHealthFromHealthLevel()
@@ -33,14 +48,15 @@ public class PlayerStats : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        if (playerManager.isInvulnerable)
+            return;
+
         if (isDead)
             return;
 
-        currentHealth = currentHealth - damage;
+        currentHealth -= damage;
 
-        healthbar.SetCurrentHealth(currentHealth);
-
-        //animatorHandler.PlayTargetAnimation("Damage_01", true);
+        healthBar.SetCurrentHealth(currentHealth);
 
         if (currentHealth <= 0)
         {
@@ -51,4 +67,5 @@ public class PlayerStats : MonoBehaviour
             //HANDLE PLAYER DEATH (like option to revive/respawn or restart)
         }
     }
+
 }

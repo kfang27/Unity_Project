@@ -1186,6 +1186,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 2017471439657708633, guid: 40f78bf6708ff5e4fa5f36e898eda80a, type: 3}
+      propertyPath: sprintStaminaCost
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 3657674348036986873, guid: 40f78bf6708ff5e4fa5f36e898eda80a, type: 3}
       propertyPath: healthBar
       value: 
@@ -1194,6 +1198,10 @@ PrefabInstance:
       propertyPath: gameOverUI
       value: 
       objectReference: {fileID: 1556936095}
+    - target: {fileID: 3657674348036986873, guid: 40f78bf6708ff5e4fa5f36e898eda80a, type: 3}
+      propertyPath: healthLevel
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 7238126736207696908, guid: 40f78bf6708ff5e4fa5f36e898eda80a, type: 3}
       propertyPath: m_Radius
       value: 0.2

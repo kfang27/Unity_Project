@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class EnemyIdleState : EnemyState
 {
+    private Animator _animator;
     public EnemyIdleState(Enemy enemy, EnemyStateMachine enemyStateMachine) : base(enemy, enemyStateMachine)
     {
+        _animator = GameObject.Find("Angry Knight").GetComponent<Animator>();
     }
 
     public override void AnimationTriggerEvent(Enemy.AnimationTriggerType triggerType)
@@ -31,7 +33,11 @@ public class EnemyIdleState : EnemyState
 
         if (enemy.IsAggroed)
         {
-            enemy.StateMachine.ChangeState(enemy.ChaseState);
+            enemy.Animator.SetBool("Chase", enemy.IsAggroed);
+            if (!_animator.GetCurrentAnimatorStateInfo(0).IsTag("Starting"))
+            {
+                enemy.StateMachine.ChangeState(enemy.ChaseState);
+            }
         }
     }
 

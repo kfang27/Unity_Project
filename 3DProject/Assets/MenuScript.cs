@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
+using System;
+using UnityEngine.Rendering.PostProcessing;
+using System.Diagnostics;
 
 public class MenuScript : MonoBehaviour
 {
@@ -22,6 +25,9 @@ public class MenuScript : MonoBehaviour
     [SerializeField] private Slider brightnessSliderValue = null;
     [SerializeField] private TMP_Text brightnessTextValue = null;
     [SerializeField] private float brightnessScale = 1;
+    public PostProcessProfile brightnessProfile;
+    private AutoExposure exposure;
+
 
     private int QualityLevel;
     private float brightnessScaleValue;
@@ -29,6 +35,7 @@ public class MenuScript : MonoBehaviour
     [Header("Resolutions Dropdowns")]
     public TMP_Dropdown resolutionsDropdown;
     private Resolution[] resolutions;
+    public Toggle fullscreenToggle;
 
     [Header("New Level")]
     public string newGameLevel;
@@ -43,6 +50,7 @@ public class MenuScript : MonoBehaviour
     {
         InitializeSettings();
         InitializeResolutionDropdown();
+        brightnessProfile.TryGetSettings(out exposure);
     }
 
     private void InitializeSettings()
@@ -95,6 +103,7 @@ public class MenuScript : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
+
     public void NewGameMessageNO() => Application.Quit();
 
     public void ExitButton() => Application.Quit();
@@ -130,6 +139,13 @@ public class MenuScript : MonoBehaviour
     {
         brightnessScale = brightness;
         brightnessTextValue.text = brightness.ToString("0.0");
+
+        if (brightnessScale != 0) {
+            exposure.keyValue.value = brightness;
+        } else {
+            // Makes brightness very dark instead of pitch black when slider is set to 0
+            exposure.keyValue.value = 0.05f;
+        }
     }
 
     public void SetQuality(int quality)
@@ -170,10 +186,14 @@ public class MenuScript : MonoBehaviour
         }
     }
 
+    public void ChangeFullscreen() {
+        Screen.SetResolution(Screen.width, Screen.height, fullscreenToggle.isOn);
+    }
+
     public void SetResolution(int resolutionIndex)
     {
         Resolution resolution = resolutions[resolutionIndex];
-        Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
+        Screen.SetResolution(resolution.width, resolution.height, fullscreenToggle.isOn);
     }
 }
 

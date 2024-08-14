@@ -13,7 +13,7 @@ public class MenuScript : MonoBehaviour
 {
     #region Default Values
     const int DEFAULT_SENS = 3;
-    const float DEFUALT_VOLUMESCALE = 1.0f;
+    const float DEFUALT_VOLUMESCALE = 50.0f;
     const float DEFAULT_BRIGHTNESS = 1.0f;
     #endregion
 
@@ -187,6 +187,7 @@ public class MenuScript : MonoBehaviour
     {
         if (MenuType == "Audio")
         {
+            volumeScale = DEFUALT_VOLUMESCALE;
             AudioListener.volume = volumeScale;
             volumeSliderValue.value = volumeScale;
             volumeTextValue.text = volumeScale.ToString("0.0");

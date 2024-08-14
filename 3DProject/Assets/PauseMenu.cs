@@ -83,6 +83,11 @@ public class PauseMenu : MonoBehaviour
         UpdateSens();
     }
 
+    public void SetVolume(float vol)
+    {
+        PlayerPrefs.SetFloat("masterVolume", vol);
+    }
+
     public void OpenSettings() {
         settingsPanel.SetActive(true);
     }

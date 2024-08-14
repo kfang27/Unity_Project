@@ -17,7 +17,7 @@ public class EnemyDamageTakenCheck : MonoBehaviour
     {
         if (collider.gameObject == _playerweapon)
         {
-            _enemy.Damage(10f);
+            _enemy.TakeDamage(10f);
         }
     }
 }

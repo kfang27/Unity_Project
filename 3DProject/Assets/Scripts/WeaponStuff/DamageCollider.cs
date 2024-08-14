@@ -40,11 +40,10 @@ public class DamageCollider : MonoBehaviour
 
         if (collision.tag == "Enemy" || collision.tag == "Hittable")
         {
-            EnemyStats enemyStats = collision.GetComponent<EnemyStats>();
-
-            if (enemyStats != null)
+            DummyEnemy enemy = collision.GetComponent<DummyEnemy>();
+            if (enemy != null)
             {
-                enemyStats.TakeDamage(currentWeaponDamage);
+                enemy.TakeDamage(currentWeaponDamage);
             }
         }
     }

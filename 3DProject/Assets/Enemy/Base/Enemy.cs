@@ -11,17 +11,19 @@ public class Enemy : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerCheckab
     [SerializeField] private float turnSpeed = 100f;
     [SerializeField] private float rotationThreshold = 5f;
     [SerializeField] private GameObject _player;
+    [SerializeField] private Animator _winAnimator;
     private CharacterController _controller;
     public EnemyHealthBar healthBar;
     public GameObject bossUI;
     public GameObject winText;
 
-    public float MaxHealth { get; set; } = 100f;
+    public float MaxHealth { get; set; } = 500f;
     [field: SerializeField] public float CurrentHealth { get; set; }
     public bool IsAggroed { get; set; }
     public bool IsWithinStrikingDistance { get; set; }
     public bool IsDoingCombo { get; set; }
     public bool IsAttacking { get; set; }
+    public bool IsDead { get; set; }
 
     private Animator _animator;
     public Animator Animator => _animator;
@@ -59,6 +61,14 @@ public class Enemy : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerCheckab
     void Update()
     {
         StateMachine.CurrentEnemyState.FrameUpdate();
+        if (IsDead)
+        {
+            if (_animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1.0f)
+            {
+                Destroy(gameObject);
+                bossUI.SetActive(false);
+            }
+        }
     }
 
     void FixedUpdate()
@@ -68,7 +78,7 @@ public class Enemy : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerCheckab
     #endregion
 
     #region Health Fucntions
-    public void Damage(float damageAmount)
+    public void TakeDamage(float damageAmount)
     {
         CurrentHealth -= damageAmount;
         healthBar.SetHealth(CurrentHealth);
@@ -81,8 +91,9 @@ public class Enemy : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerCheckab
 
     public void Die()
     {
-        Destroy(gameObject);
-        bossUI.SetActive(false);
+        _animator.Play("Death");
+        _winAnimator.Play("Win");
+        IsDead = true;
 
     }
     #endregion

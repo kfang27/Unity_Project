@@ -234,6 +234,7 @@ MonoBehaviour:
   currentStamina: 0
   staminaRegenAmount: 7
   staminaRegenTimer: 0
+  gameOverUI: {fileID: 0}
 --- !u!1001 &2246557217911718139
 PrefabInstance:
   m_ObjectHideFlags: 0

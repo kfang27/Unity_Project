@@ -21,6 +21,8 @@ public class PlayerStats : MonoBehaviour
     public float staminaRegenAmount = 7;
     public float staminaRegenTimer = 0;
 
+    public GameOverUI gameOverUI;
+
     private void Awake()
     {
         playerManager = GetComponent<PlayerManager>();
@@ -31,6 +33,8 @@ public class PlayerStats : MonoBehaviour
 
         animatorHandler = GetComponentInChildren<AnimatorHandler>();
 
+        // Don't need this since already assigning the gameobject in inspector
+        //gameOverUI = FindAnyObjectByType<GameOverUI>();
     }
 
     void Start()
@@ -67,6 +71,12 @@ public class PlayerStats : MonoBehaviour
         if (isDead)
             return;
 
+        if (gameOverUI == null)
+        {
+            Debug.LogError("gameOverUI is not assigned in PlayerStats!");
+            return;
+        }
+
         currentHealth -= damage;
 
         healthBar.SetCurrentHealth(currentHealth);
@@ -78,6 +88,7 @@ public class PlayerStats : MonoBehaviour
             isDead = true;
 
             //HANDLE PLAYER DEATH (like option to revive/respawn or restart)
+            gameOverUI.OpenGameOverScreen();
         }
     }
 

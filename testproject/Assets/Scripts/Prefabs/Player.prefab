@@ -165,11 +165,12 @@ MonoBehaviour:
   normalCamera: {fileID: 0}
   movementSpeed: 5
   walkingSpeed: 1
-  sprintSpeed: 7
+  sprintSpeed: 8
   rotationSpeed: 10
   isSprinting: 0
-  sprintStaminaCost: 10
-  rollStaminaCost: 20
+  sprintStaminaCost: 0.02
+  rollStaminaCost: 15
+  backstepStaminaCost: 10
 --- !u!114 &7891451319242281376
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -228,11 +229,11 @@ MonoBehaviour:
   maxHealth: 0
   currentHealth: 0
   isDead: 0
-  staminaBar: {fileID: 0}
+  staminaLevel: 10
   maxStamina: 100
   currentStamina: 0
-  staminaRegenRate: 5
-  staminaRegenDelay: 2
+  staminaRegenAmount: 7
+  staminaRegenTimer: 0
 --- !u!1001 &2246557217911718139
 PrefabInstance:
   m_ObjectHideFlags: 0

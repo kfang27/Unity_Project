@@ -19,7 +19,8 @@ public class PlayerLocomotion : MonoBehaviour
     public new Rigidbody rigidbody;
     public GameObject normalCamera;
 
-    [Header("Stats")]
+    
+    [Header("Movement Stats")]
     [SerializeField]
     float movementSpeed = 5;
     [SerializeField]
@@ -32,8 +33,13 @@ public class PlayerLocomotion : MonoBehaviour
     public bool isSprinting;
 
     PlayerStats playerStats;
-    public int sprintStaminaCost = 10;
-    public int rollStaminaCost = 20;
+    [Header("Roll Costs")]
+    [SerializeField]
+    float sprintStaminaCost = 0.05f;
+    [SerializeField]
+    float rollStaminaCost = 15;
+    [SerializeField]
+    float backstepStaminaCost = 10;
 
     void Start()
     {
@@ -111,6 +117,9 @@ public class PlayerLocomotion : MonoBehaviour
             speed = sprintSpeed;
             isSprinting = true;
             moveDirection *= speed;
+
+            // Had to change cost value to a really small float value or else stamina depletes instantly
+            playerStats.DrainStamina(sprintStaminaCost);
         }
         else
         {
@@ -144,6 +153,9 @@ public class PlayerLocomotion : MonoBehaviour
         if (animatorHandler.anim.GetBool("isInteracting"))
             return;
 
+        if (playerStats.currentStamina <= 0)
+            return;
+
         if (inputHandler.rollFlag)
         {
             moveDirection = cameraObject.forward * inputHandler.vertical;
@@ -155,10 +167,12 @@ public class PlayerLocomotion : MonoBehaviour
                 moveDirection.y = 0;
                 Quaternion rollRotation = Quaternion.LookRotation(moveDirection);
                 myTransform.rotation = rollRotation;
+                playerStats.DrainStamina(rollStaminaCost);
             }
             else
             {
                 animatorHandler.PlayTargetAnimation("Backstep", true);
+                playerStats.DrainStamina(backstepStaminaCost);
             }
         }
     }

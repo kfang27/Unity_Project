@@ -24,6 +24,7 @@ public class InputHandler : MonoBehaviour
     public float rollInputTimer;
     public bool isInteracting;
 
+    PlayerStats playerStats;
     PlayerControls inputActions;
     CameraHandler cameraHandler;
 
@@ -36,6 +37,7 @@ public class InputHandler : MonoBehaviour
         playerAttacker = GetComponent<PlayerAttacker>();
         playerInventory = GetComponent<PlayerInventory>();
         playerManager = GetComponent<PlayerManager>();
+        playerStats = GetComponent<PlayerStats>();
     }
 
     private void FixedUpdate()
@@ -56,6 +58,9 @@ public class InputHandler : MonoBehaviour
             inputActions = new PlayerControls();
             inputActions.PlayerMovement.Movement.performed += inputActions => movementInput = inputActions.ReadValue<Vector2>();
             inputActions.PlayerMovement.Camera.performed += i => cameraInput = i.ReadValue<Vector2>();
+
+            inputActions.PlayerActions.Roll.performed += i => b_Input = true;
+            inputActions.PlayerActions.Roll.canceled += i => b_Input = false;
         }
 
         inputActions.Enable();
@@ -88,7 +93,7 @@ public class InputHandler : MonoBehaviour
     private void HandleRollInput(float delta)
     {
         // Check if the spacebar is pressed
-        b_Input = inputActions.PlayerActions.Roll.phase == UnityEngine.InputSystem.InputActionPhase.Performed;
+        //b_Input = inputActions.PlayerActions.Roll.phase == UnityEngine.InputSystem.InputActionPhase.Performed;
 
         //if (b_Input)
         //{
@@ -115,13 +120,26 @@ public class InputHandler : MonoBehaviour
         if (b_Input)
         {
             rollInputTimer += delta;
-            sprintFlag = true;
+            //sprintFlag = true;
+
+            if (playerStats.currentStamina <= 0)
+            {
+                b_Input = false;
+                sprintFlag = false;
+            }
+
+            if (moveAmount > 0.5f && playerStats.currentStamina > 0)
+            {
+                sprintFlag = true;
+            }
         }
         else
         {
+            sprintFlag = false;
+
             if (rollInputTimer > 0 && rollInputTimer < 0.5f)
             {
-                sprintFlag = false;
+                //sprintFlag = false;
                 rollFlag = true;
             }
 

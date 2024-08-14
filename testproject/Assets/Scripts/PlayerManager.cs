@@ -7,6 +7,8 @@ public class PlayerManager : MonoBehaviour
     InputHandler inputHandler;
     Animator anim;
     CameraHandler cameraHandler;
+    PlayerStats playerStats;
+
 
     public bool canDoCombo;
     public bool isInvulnerable;
@@ -16,6 +18,7 @@ public class PlayerManager : MonoBehaviour
     {
         inputHandler = GetComponent<InputHandler>();
         anim = GetComponentInChildren<Animator>();
+        playerStats = GetComponent<PlayerStats>();
     }
 
     private void Awake()
@@ -33,6 +36,7 @@ public class PlayerManager : MonoBehaviour
 
         // can be commented out if using first implementation in HandleRollInput function of InputHandler
         inputHandler.sprintFlag = false;
+
     }
 
     private void FixedUpdate()
@@ -44,6 +48,8 @@ public class PlayerManager : MonoBehaviour
             cameraHandler.FollowTarget(delta);
             cameraHandler.HandleCameraRotation(delta, inputHandler.mouseX, inputHandler.mouseY);
         }
+
+        playerStats.RegenerateStamina();
     }
 
     private void LateUpdate()

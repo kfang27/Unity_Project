@@ -20,8 +20,8 @@ public class GameOverUI : MonoBehaviour
 
     public void RestartGame()
     {
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        SceneManager.LoadScene("World Scene");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        //SceneManager.LoadScene("World Scene");
         Cursor.lockState = CursorLockMode.Locked;
     }
 }

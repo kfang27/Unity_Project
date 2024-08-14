@@ -77,7 +77,7 @@ public class EnemyAttackState : EnemyState
             {
                 enemy.SetDoingComboStatus(true);
             }
-            if (!enemy.IsFacingPlayer() && !enemy.Animator.GetBool("IsAttacking"))
+            if (!enemy.IsFacingPlayer())
             {
                 enemy.RotateTowardsPlayer();
             }

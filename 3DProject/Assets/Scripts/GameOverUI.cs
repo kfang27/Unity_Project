@@ -15,11 +15,13 @@ public class GameOverUI : MonoBehaviour
     public void OpenGameOverScreen()
     {
         gameObject.SetActive(true);
+        Cursor.lockState = CursorLockMode.None;
     }
 
     public void RestartGame()
     {
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         SceneManager.LoadScene("World Scene");
+        Cursor.lockState = CursorLockMode.Locked;
     }
 }

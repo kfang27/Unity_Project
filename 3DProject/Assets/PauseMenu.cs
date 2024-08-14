@@ -12,6 +12,7 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private GameObject confirmationPanel;
     private bool gamePaused = false;
 
+    [SerializeField] private GameOverUI gameOverUI;
     [SerializeField] private GameObject settingsPanel;
     [SerializeField] private Slider brightnessSlider;
     [SerializeField] private Slider sensSliderValue;
@@ -49,7 +50,7 @@ public class PauseMenu : MonoBehaviour
 
     private void Update() {
         // Checks if escape key is pressed
-        if (Input.GetKeyDown(KeyCode.Escape)) {
+        if (Input.GetKeyDown(KeyCode.Escape) && !gameOverUI.isActiveAndEnabled) {
             // if the game is paused, resume it
             if (gamePaused) {
                 ResumeGame();
@@ -57,6 +58,7 @@ public class PauseMenu : MonoBehaviour
             // if the game is not paused, pause it
             else {
                 PauseGame();
+                Cursor.lockState = CursorLockMode.None;
             }
         }
     }
@@ -107,6 +109,7 @@ public class PauseMenu : MonoBehaviour
         pauseMenuPanel.SetActive(false);
         Time.timeScale = 1f;
         gamePaused = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     public void ConfirmExit() {

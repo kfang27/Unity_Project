@@ -14,6 +14,8 @@ public class PauseMenu : MonoBehaviour
 
     [SerializeField] private GameObject settingsPanel;
     [SerializeField] private Slider brightnessSlider;
+    [SerializeField] private Slider sensSliderValue;
+    [SerializeField] private Slider volumeSliderValue;
 
     public PostProcessProfile brightnessProfile;
     private PostProcessLayer layer;
@@ -23,6 +25,7 @@ public class PauseMenu : MonoBehaviour
 
     private void Start() {
         brightnessProfile.TryGetSettings(out exposure);
+        SetSavedValues();
 
         cam = FindFirstObjectByType<CameraHandler>();
 
@@ -32,8 +35,15 @@ public class PauseMenu : MonoBehaviour
     }
 
     private void UpdateSens() {
-        cam.lookSpeed = 0.1f * ((float)PlayerPrefs.GetInt("masterSens") / 8);
-        cam.pivotSpeed = 0.3f * ((float)PlayerPrefs.GetInt("masterSens") / 8);
+        if (cam == null)
+        {
+            FindFirstObjectByType<CameraHandler>();
+        }
+        else
+        {
+            cam.lookSpeed = 0.1f * ((float)sensSliderValue.value / 8);
+            cam.pivotSpeed = 0.3f * ((float)sensSliderValue.value / 8);
+        }
 
     }
 
@@ -49,6 +59,12 @@ public class PauseMenu : MonoBehaviour
                 PauseGame();
             }
         }
+    }
+    private void SetSavedValues()
+    {
+        sensSliderValue.value = PlayerPrefs.GetInt("masterSens");
+        volumeSliderValue.value = PlayerPrefs.GetFloat("masterVolume");
+        brightnessSlider.value = PlayerPrefs.GetFloat("masterBrightness");
     }
 
     public void SetBrightness(float brightness)

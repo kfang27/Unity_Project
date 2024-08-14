@@ -7,24 +7,31 @@ using TMPro;
 using System;
 using UnityEngine.Rendering.PostProcessing;
 using System.Diagnostics;
+using Unity.VisualScripting;
 
 public class MenuScript : MonoBehaviour
 {
+    #region Default Values
+    const int DEFAULT_SENS = 3;
+    const float DEFUALT_VOLUMESCALE = 1.0f;
+    const float DEFAULT_BRIGHTNESS = 1.0f;
+    #endregion
+
     [Header("Volume Setting")]
     [SerializeField] private TMP_Text volumeTextValue = null;
     [SerializeField] private Slider volumeSliderValue = null;
-    [SerializeField] private float volumeScale = 1.0f;
+    [SerializeField] private float volumeScale;
 
     [Header("Gameplay Settings")]
     [SerializeField] private TMP_Text sensTextValue = null;
     [SerializeField] private Slider sensSliderValue = null;
-    [SerializeField] private int sensIndex = 3;
-    public int mainSens = 3;
+    [SerializeField] private int sensIndex;
+    public int mainSens;
 
     [Header("Graphic Settings")]
     [SerializeField] private Slider brightnessSliderValue = null;
     [SerializeField] private TMP_Text brightnessTextValue = null;
-    [SerializeField] private float brightnessScale = 1;
+    [SerializeField] private float brightnessScale;
     public PostProcessProfile brightnessProfile;
     private AutoExposure exposure;
 
@@ -48,9 +55,17 @@ public class MenuScript : MonoBehaviour
 
     private void Start()
     {
+        GetSavedValues();
         InitializeSettings();
         InitializeResolutionDropdown();
         brightnessProfile.TryGetSettings(out exposure);
+    }
+
+    private void GetSavedValues()
+    {
+        mainSens = PlayerPrefs.GetInt("masterSens", DEFAULT_SENS);
+        volumeScale = PlayerPrefs.GetFloat("masterVolume", DEFUALT_VOLUMESCALE);
+        brightnessScale = PlayerPrefs.GetFloat("masterBrightness", DEFAULT_BRIGHTNESS);
     }
 
     private void InitializeSettings()
@@ -140,9 +155,17 @@ public class MenuScript : MonoBehaviour
         brightnessScale = brightness;
         brightnessTextValue.text = brightness.ToString("0.0");
 
-        if (brightnessScale != 0) {
+        if (!brightnessProfile.TryGetSettings(out exposure))
+        {
+            UnityEngine.Debug.Log("AutoExposure settings not found or couldn't be fetched from the PostProcessProfile.");
+        }
+
+        if (brightnessScale != 0)
+        {
             exposure.keyValue.value = brightness;
-        } else {
+        }
+        else
+        {
             // Makes brightness very dark instead of pitch black when slider is set to 0
             exposure.keyValue.value = 0.05f;
         }
@@ -171,7 +194,7 @@ public class MenuScript : MonoBehaviour
         }
         else if (MenuType == "Gameplay")
         {
-            sensIndex = 3;
+            sensIndex = DEFAULT_SENS;
             mainSens = sensIndex;
             sensSliderValue.value = sensIndex;
             sensTextValue.text = sensIndex.ToString("0");
@@ -179,14 +202,15 @@ public class MenuScript : MonoBehaviour
         }
         else if (MenuType == "Graphics")
         {
-            brightnessScale = 1;
+            brightnessScale = DEFAULT_BRIGHTNESS;
             brightnessSliderValue.value = brightnessScale;
             brightnessTextValue.text = brightnessScale.ToString("0.0");
             GraphicsApply();
         }
     }
 
-    public void ChangeFullscreen() {
+    public void ChangeFullscreen()
+    {
         Screen.SetResolution(Screen.width, Screen.height, fullscreenToggle.isOn);
     }
 
@@ -196,4 +220,3 @@ public class MenuScript : MonoBehaviour
         Screen.SetResolution(resolution.width, resolution.height, fullscreenToggle.isOn);
     }
 }
-

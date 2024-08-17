@@ -4,7 +4,7 @@ Michael (Michael11644)
 Azmain (azmainhossain1)  
 Kevin (kfang27)  
 
-Feature branches still exist as proof of everyone contributing.  
+Feature branches still exist as proof of everyone contributing.
 To playtest the game, click on the tags under the "Releases" section, then click on the most recent tag, click on the "playable-build-0.2.2-win.zip" to download a compressed/zipped folder, go into the folder (extract everything if needed or if come across an error), and run the "Knightmare Rush.exe" application.  
 Currently Windows operating systems only.
 

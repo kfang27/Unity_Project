@@ -19,15 +19,8 @@ public class AgroDistanceCheck : MonoBehaviour
         if (collider.gameObject == PlayerTarget)
         {
             _enemy.SetAggroStatus(true);
+            _enemy.Animator.SetBool("IsAggroed", true);
             bossUI.SetActive(true);
-        }
-    }
-
-    private void OnTriggerExit(Collider collider)
-    {
-        if (collider.gameObject == PlayerTarget)
-        {
-            _enemy.SetAggroStatus(false);
         }
     }
 }

@@ -33,11 +33,11 @@ public class EnemyIdleState : EnemyState
 
         if (enemy.IsAggroed)
         {
-            enemy.Animator.SetBool("Chase", enemy.IsAggroed);
-            if (!_animator.GetCurrentAnimatorStateInfo(0).IsTag("Starting"))
+            if (_animator.GetCurrentAnimatorStateInfo(0).IsName("Chase"))
             {
                 enemy.StateMachine.ChangeState(enemy.ChaseState);
             }
+            _animator.SetBool("Chase", enemy.IsAggroed);
         }
     }
 

@@ -48,7 +48,7 @@ public class EnemyAttackState : EnemyState
                 enemy.StateMachine.ChangeState(enemy.ChaseState);
             }*/
             enemy.Animator.SetBool("IsWithinStrikingDistance", false);
-            if (enemy.Animator.GetCurrentAnimatorStateInfo(0).IsName("Attack") && !enemy.Animator.GetBool("IsAttacking"))
+            if (enemy.Animator.GetCurrentAnimatorStateInfo(0).IsName("Attack") && !enemy.Animator.IsInTransition(0))
             {
                 enemy.SetDoingComboStatus(false);
                 enemy.StateMachine.ChangeState(enemy.ChaseState);

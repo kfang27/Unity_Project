@@ -570,7 +570,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1
+  m_Radius: 1.4
   m_Height: 4
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
@@ -1186,6 +1186,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 2017471439657708633, guid: 40f78bf6708ff5e4fa5f36e898eda80a, type: 3}
+      propertyPath: sprintStaminaCost
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 3657674348036986873, guid: 40f78bf6708ff5e4fa5f36e898eda80a, type: 3}
       propertyPath: healthBar
       value: 
@@ -1194,6 +1198,10 @@ PrefabInstance:
       propertyPath: gameOverUI
       value: 
       objectReference: {fileID: 1556936095}
+    - target: {fileID: 3657674348036986873, guid: 40f78bf6708ff5e4fa5f36e898eda80a, type: 3}
+      propertyPath: healthLevel
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 7238126736207696908, guid: 40f78bf6708ff5e4fa5f36e898eda80a, type: 3}
       propertyPath: m_Radius
       value: 0.2
@@ -3267,7 +3275,7 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.1
-  m_Height: 1
+  m_Height: 1.3
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &500497908
@@ -11922,7 +11930,7 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 3
   m_Height: 1.85
-  m_Radius: 0.8
+  m_Radius: 0.9
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08

@@ -17,7 +17,7 @@ public class Enemy : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerCheckab
     public GameObject bossUI;
     public GameObject winText;
 
-    public float MaxHealth { get; set; } = 500f;
+    public float MaxHealth { get; set; } = 400f;
     [field: SerializeField] public float CurrentHealth { get; set; }
     public bool IsAggroed { get; set; }
     public bool IsWithinStrikingDistance { get; set; }
@@ -63,7 +63,8 @@ public class Enemy : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerCheckab
         StateMachine.CurrentEnemyState.FrameUpdate();
         if (IsDead)
         {
-            if (_animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1.0f)
+            AnimatorStateInfo animatorStateInfo = _animator.GetCurrentAnimatorStateInfo(0);
+            if (animatorStateInfo.normalizedTime > 1.0f && animatorStateInfo.IsName("Death"))
             {
                 Destroy(gameObject);
                 bossUI.SetActive(false);

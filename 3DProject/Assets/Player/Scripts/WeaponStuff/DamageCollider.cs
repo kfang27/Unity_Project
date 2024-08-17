@@ -40,7 +40,7 @@ public class DamageCollider : MonoBehaviour
 
         if (collision.tag == "Enemy" || collision.tag == "Hittable")
         {
-            DummyEnemy enemy = collision.GetComponent<DummyEnemy>();
+            AngryKnight enemy = collision.GetComponent<AngryKnight>();
             if (enemy != null)
             {
                 enemy.TakeDamage(currentWeaponDamage);

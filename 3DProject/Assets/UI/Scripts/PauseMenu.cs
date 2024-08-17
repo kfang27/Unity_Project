@@ -42,8 +42,8 @@ public class PauseMenu : MonoBehaviour
         }
         else
         {
-            cam.lookSpeed = 0.1f * ((float)sensSliderValue.value / 8);
-            cam.pivotSpeed = 0.3f * ((float)sensSliderValue.value / 8);
+            cam.lookSpeed = 0.05f * ((float)sensSliderValue.value / 8);
+            cam.pivotSpeed = 0.05f * ((float)sensSliderValue.value / 8);
         }
 
     }
